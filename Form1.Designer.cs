@@ -30,7 +30,6 @@ namespace day_15_forms
         private void InitializeComponent()
         {
             this.button1 = new System.Windows.Forms.Button();
-            this.bilde = new System.Windows.Forms.PictureBox();
             this.log = new System.Windows.Forms.TextBox();
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
             this.fileToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -38,7 +37,7 @@ namespace day_15_forms
             this.saveToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.eXITToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.progress = new System.Windows.Forms.ProgressBar();
-            ((System.ComponentModel.ISupportInitialize)(this.bilde)).BeginInit();
+            this.status = new System.Windows.Forms.Label();
             this.menuStrip1.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -52,16 +51,6 @@ namespace day_15_forms
             this.button1.UseVisualStyleBackColor = true;
             this.button1.Click += new System.EventHandler(this.button1_Click);
             // 
-            // bilde
-            // 
-            this.bilde.Location = new System.Drawing.Point(12, 31);
-            this.bilde.Name = "bilde";
-            this.bilde.Size = new System.Drawing.Size(55, 55);
-            this.bilde.SizeMode = System.Windows.Forms.PictureBoxSizeMode.StretchImage;
-            this.bilde.TabIndex = 1;
-            this.bilde.TabStop = false;
-            this.bilde.Click += new System.EventHandler(this.bilde_Click);
-            // 
             // log
             // 
             this.log.Location = new System.Drawing.Point(12, 384);
@@ -71,6 +60,7 @@ namespace day_15_forms
             this.log.ScrollBars = System.Windows.Forms.ScrollBars.Both;
             this.log.Size = new System.Drawing.Size(408, 122);
             this.log.TabIndex = 3;
+            this.log.KeyPress += new System.Windows.Forms.KeyPressEventHandler(this.log_KeyPress);
             // 
             // menuStrip1
             // 
@@ -79,7 +69,7 @@ namespace day_15_forms
             this.fileToolStripMenuItem});
             this.menuStrip1.Location = new System.Drawing.Point(0, 0);
             this.menuStrip1.Name = "menuStrip1";
-            this.menuStrip1.Size = new System.Drawing.Size(680, 28);
+            this.menuStrip1.Size = new System.Drawing.Size(680, 30);
             this.menuStrip1.TabIndex = 4;
             this.menuStrip1.Text = "menuStrip1";
             // 
@@ -90,7 +80,7 @@ namespace day_15_forms
             this.saveToolStripMenuItem,
             this.eXITToolStripMenuItem});
             this.fileToolStripMenuItem.Name = "fileToolStripMenuItem";
-            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 24);
+            this.fileToolStripMenuItem.Size = new System.Drawing.Size(46, 26);
             this.fileToolStripMenuItem.Text = "File";
             // 
             // openToolStripMenuItem
@@ -120,21 +110,29 @@ namespace day_15_forms
             this.progress.TabIndex = 5;
             this.progress.Click += new System.EventHandler(this.progressBar1_Click);
             // 
+            // status
+            // 
+            this.status.AutoSize = true;
+            this.status.Location = new System.Drawing.Point(467, 397);
+            this.status.Name = "status";
+            this.status.Size = new System.Drawing.Size(46, 17);
+            this.status.TabIndex = 6;
+            this.status.Text = "status";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 16F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(680, 518);
+            this.Controls.Add(this.status);
             this.Controls.Add(this.progress);
             this.Controls.Add(this.log);
-            this.Controls.Add(this.bilde);
             this.Controls.Add(this.button1);
             this.Controls.Add(this.menuStrip1);
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "Form1";
             this.Text = "Bilžuks";
             this.Load += new System.EventHandler(this.Form1_Load);
-            ((System.ComponentModel.ISupportInitialize)(this.bilde)).EndInit();
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -145,7 +143,6 @@ namespace day_15_forms
         #endregion
 
         private System.Windows.Forms.Button button1;
-        private System.Windows.Forms.PictureBox bilde;
         private System.Windows.Forms.TextBox log;
         private System.Windows.Forms.MenuStrip menuStrip1;
         private System.Windows.Forms.ToolStripMenuItem fileToolStripMenuItem;
@@ -153,6 +150,7 @@ namespace day_15_forms
         private System.Windows.Forms.ToolStripMenuItem saveToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem eXITToolStripMenuItem;
         private System.Windows.Forms.ProgressBar progress;
+        private System.Windows.Forms.Label status;
     }
 }
 

@@ -48,7 +48,7 @@ namespace day_15_forms
             //string[] masīvs, kas saturēs vairākus failu nosaukumus
             //d.FileNames
 
-            d.Multiselect = true;
+            //d.Multiselect = true;
             d.Filter = "Image files(*.png; *.jpeg; *bmp)|*.png;*jpeg;*.bmp|Custom files(a*.*)|a*.*|All files(*.*)|*.*";
 
             d.ShowDialog();
@@ -71,40 +71,50 @@ namespace day_15_forms
 
             PictureBox pb = new PictureBox();
 
-
+            int yloc = 10;
 
 
             //1. instancēt tik PictureBox objektus, cik ir izvēlēti faili
             //2. ielādējiet bildes ar bilde.load("filename")
             //3. salieciet (nokoriģējiet) adekvātas Y lokacijas !!! - jānosaka bildes augstums ar bilde.Image.Height
             //
-            /*
-            PictureBox pb = new PictureBox();
+            
+            //PictureBox pb = new PictureBox();
 
             
             pb.Size = new Size(100,100);
             pb.SizeMode = PictureBoxSizeMode.StretchImage;
 
+            pb.Load(fname);
+            pb.Click += Pb_Click;
+            pb.MouseMove += Pb_MouseMove;
+            //log.KeyPress += log_KeyPress;
+
+            pb.Location = new Point(pb.Location.X, yloc);
+
+            yloc += 120;
+
+
             this.Controls.Add(pb);
 
             this.Refresh();
-            */
+
 
 
             //korekcijas cikls
             //pb.Location = new Point(10, Y+???);
 
-
+            
             progress.Maximum = 50;
-            int x = bilde.Location.X;
+            int x = pb.Location.X;
 
             for (int i = 0; i < 50; i++)
             {
-                //for () loops katrai bildei šito !
+                //foreach (PictureBox bilde in pbmas) //loops katrai bildei šito !
                 //{
                 //mainam bildes atrašanās vietu : sākotnējai X + i
-                bilde.Location = new Point(x  + i, bilde.Location.Y);
-                bilde.Load(fname);
+                pb.Location = new Point(x  + i, pb.Location.Y);
+                //bilde.Load(fname);
 
                 //atļaut apstrādāt citus notikumus, savādāk forma būs 'iefrīzojusi'
                 Application.DoEvents();
@@ -200,6 +210,36 @@ namespace day_15_forms
 
         }
 
+
+
+        private void Pb_MouseMove(object sender, MouseEventArgs e)
+        {
+            //atjaunot leibla saturu ar peles X:Y info
+            //e.X
+            //e.Y
+            
+
+            status.Text = "X:" + e.X + "; Y:" + e.Y;
+
+            //throw new NotImplementedException();
+        }
+
+        private void Pb_Click(object sender, EventArgs e)
+        {
+            //MessageBox.Show("Booo");
+
+                                        
+
+            ToolTip tt = new ToolTip();
+            tt.SetToolTip((PictureBox)sender, "Boo!");
+
+
+            this.Controls.Remove((PictureBox)sender);
+
+
+            //throw new NotImplementedException();
+        }
+
         private void Form1_Load(object sender, EventArgs e)
         {
 
@@ -222,6 +262,12 @@ namespace day_15_forms
         private void progressBar1_Click(object sender, EventArgs e)
         {
 
+        }
+
+        private void log_KeyPress(object sender, KeyPressEventArgs e)
+        {
+           
+            MessageBox.Show("Key Presed : " + e.KeyChar);
         }
     }
 }
